@@ -12,6 +12,7 @@ builder.Services
     .WithAccessToken(options =>
     {
       options.Audience = builder.Configuration["Auth0:Audience"];
+      options.UseRefreshTokens = true;
     });
 
 builder.Services.AddControllersWithViews();

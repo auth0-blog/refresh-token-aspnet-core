@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
          {
              ValidAudience = builder.Configuration["Auth0:Audience"],
              ValidIssuer = $"{builder.Configuration["Auth0:Domain"]}",
-             ValidateLifetime = true
+             ValidateLifetime = true,
+             ClockSkew = TimeSpan.Zero
          };
      });
 
